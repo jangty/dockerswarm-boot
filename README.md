@@ -1,8 +1,8 @@
 # 정보 임의 수정금지 
 포트나 이름 수정필요시 TA 연락주세요
 
-# was 이미지 빌드, run 
-wildfly14, scouter 포함되어있는 이미지를 생성하고, docker swarm환경에서 기동한다
+# 이미지 빌드, run 
+어플리케이션 jar, scouter 포함되어있는 이미지를 생성하고, docker swarm환경에서 기동한다
 
 docker swarm 환경에서 수동으로 기동하지 않고, 젠킨스에서 관리한다.
 
