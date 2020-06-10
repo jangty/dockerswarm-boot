@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
     wildfly:
-      image: 10.50.23.30:5000/wildfly-vms:latest ### Edit image name 
+      #image: 10.50.23.30:5000/boot-vms:latest ### Edit image name 
+      image: boot-vms:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
@@ -14,9 +15,14 @@ services:
         - 10090:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
-        replicas: 2
+        replicas: 1
+        placement:
+#          constraints: [node.role == manager]
+          constraints: [node.role == worker]
+
       volumes:
-        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+#        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+        - /home/asmanager/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
