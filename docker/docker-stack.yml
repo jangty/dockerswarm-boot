@@ -20,9 +20,9 @@ services:
 #          constraints: [node.role == manager]
           constraints: [node.role == worker]
 
-      volumes:
+#      volumes:
 #        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
-        - /home/asmanager/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+#        - /home/asmanager/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
