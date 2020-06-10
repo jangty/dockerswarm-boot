@@ -15,6 +15,8 @@ COPY ${JAR_FILE} app.jar
 RUN mkdir scouter
 COPY docker/scouter scouter
 
+RUN mkdir box
+RUN mkdir box/java_logs
 RUN mkdir box/java_logs/vms
 
 
