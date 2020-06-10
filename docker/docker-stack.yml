@@ -24,7 +24,7 @@ services:
 
       volumes:
 #        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
-        - /home/asmanager/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
+        - /home/asmanager/logs/wildfly/vms:/box/java_logs/vms ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
