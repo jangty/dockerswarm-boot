@@ -15,6 +15,9 @@ COPY ${JAR_FILE} app.jar
 RUN mkdir scouter
 COPY docker/scouter scouter
 
+RUN mkdir box/java_logs/vms
+
+
 EXPOSE 8080
 
 #ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Dserver.port=8080", "-jar", "app.jar"]
