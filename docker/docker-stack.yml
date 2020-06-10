@@ -18,7 +18,8 @@ services:
         replicas: 1
         placement:
 #          constraints: [node.role == manager]
-          constraints: [node.role == worker]
+#          constraints: [node.role == worker]
+           constraints: [node.hostname == jv0516]
 
       volumes:
 #        - /box/logs/wildfly/vms:/opt/jboss/wildfly/standalone/log ### Edit WAS name 
