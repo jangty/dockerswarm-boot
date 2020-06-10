@@ -8,7 +8,8 @@ services:
         context: .
         dockerfile: Dockerfile
 #      restart: always # if container down restart autometic
-      user: "701"
+#      user: "701"
+      user: root
       ports:
         - 8180:8080 ### Edit port name (http) 
         - 8109:8009 ### Edit port name (ajp)
