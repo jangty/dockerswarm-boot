@@ -3,7 +3,7 @@ version: '3.7'
 services:
     springboot:
       #image: 10.50.23.30:5000/boot-vms:latest ### Edit image name 
-      image: 10.50.23.30:5000/vms-springboot:latest ### Edit image name 
+      image: 10.50.23.30:5000/vms-was:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
