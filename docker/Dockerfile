@@ -23,7 +23,7 @@ RUN mkdir box/java_logs/vms
 EXPOSE 8080
 
 #ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Dserver.port=8080", "-jar", "app.jar"]
-ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
 
 
 # TODO : log dir
