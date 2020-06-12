@@ -4,7 +4,9 @@
 # 이미지 빌드, run 
 어플리케이션 jar, scouter 포함되어있는 이미지를 생성하고, docker swarm환경에서 기동한다
 
-docker swarm 환경에서 수동으로 기동하지 않고, 젠킨스에서 관리한다.
+docker swarm 환경에서 수동으로 기동하지 않고, 
+
+젠킨스에서 stack_deploy.sh 스크립트로 배포
 
 
 
