@@ -31,13 +31,13 @@ then
 fi
 
 #docker service logs -f vms-springboot_wildfly
-docker service logs --tail 0 -f $1_$2 | while read line; do
-    echo "$line"
-       if [[ $line =~ 'Started SiteApplication in' ]]; then
-            pkill -9 -P $$ -f "docker service logs --tail 0 -f"
-       fi
-       if [[ $line =~ 'Application run failed' ]]; then
-            pkill -9 -P $$ -f "docker service logs --tail 0 -f"
-            exit 1;
-       fi
-done
+# docker service logs --tail 0 -f $1_$2 | while read line; do
+#     echo "$line"
+#       if [[ $line =~ 'Started SiteApplication in' ]]; then
+#             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
+#       fi
+#       if [[ $line =~ 'Application run failed' ]]; then
+#             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
+#             exit 1;
+#       fi
+# done
