@@ -1,6 +1,11 @@
 # https://spring.io/guides/gs/spring-boot-docker/
 
-FROM openjdk:8
+FROM centos:7.8.2003
+
+openjdk:8
+
+RUN yum -y install openjdk:8 && \
+    yum clean all
 
 #RUN adduser asmanager
 
