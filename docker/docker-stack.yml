@@ -3,7 +3,7 @@ version: '3.7'
 services:
     springboot:
       #image: 10.50.23.30:5000/boot-vms:latest ### Edit image name 
-      image: 10.50.23.30:5000/vms-was:latest ### Edit image name 
+      image: 10.50.23.30:5000/appname-was:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
@@ -20,14 +20,14 @@ services:
         placement:
 #          constraints: [node.role == manager]
 #          constraints: [node.role == worker]
-          constraints: [node.role != manager]
-#           constraints: [node.hostname == jv0516]
+#          constraints: [node.role != manager]
+           constraints: [node.hostname == jv0516]
 
       volumes:
-        - /box/logs/vms/springboot:/box/java_logs/vms ### Edit WAS name 
+        - /box/logs/appname/springboot:/box/java_logs/appname ### Edit WAS name 
 #      networks:
 #        - backend
       environment:
-        WAS_NAME: vms ### Edit WAS name 
+        WAS_NAME: appname ### Edit WAS name 
         TZ: Asia/Seoul
 
