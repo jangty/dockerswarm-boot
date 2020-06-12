@@ -30,7 +30,8 @@ then
     docker service update --force --update-parallelism 1 --update-delay $4 --image=$3 $1_$2
 fi
 
-#docker service logs -f vms-springboot_wildfly
+docker service logs --tail 0 -f $1_$2
+
 # docker service logs --tail 0 -f $1_$2 | while read line; do
 #     echo "$line"
 #       if [[ $line =~ 'Started SiteApplication in' ]]; then
