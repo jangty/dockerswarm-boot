@@ -26,7 +26,7 @@ fi
 if [ $STACK_IS_RUNNING != 0 ]
 then
     echo "[INFO] docker stack is already running.. service update"
-    echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $4 --update-failure-action=rollback --image=$3 $1_$2"
+    echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $4 --health-retries 1 --update-failure-action rollback --image=$3 $1_$2"
     docker service update --force --update-parallelism 1 --update-delay $4 --image=$3 $1_$2
 fi
 
