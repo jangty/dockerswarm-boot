@@ -55,9 +55,10 @@ docker service logs --tail 0 -f $1_$2 | while read line; do
       if [[ $line =~ 'Application run failed' ]]; then
             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
             
-            echo "[ERROR] AUTO ROLLBACK !!!!!! "
+            echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] AUTO ROLLBACK !!!!!! "
             docker service rollback $1_$2
-            echo "[ERROR] CHECK Application Service !!!!!! "
+            echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] rollback Complete ! "
+            echo "[INFO] CHECK Application Service !!!!!! "
             
             exit 1;
       fi
