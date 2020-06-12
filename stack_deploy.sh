@@ -36,7 +36,6 @@ SLEEP_CNT=0
 while :
 do
     echo "[INFO] WAITING... for start docker service"
-    sleep 1
     SLEEP_CNT=`expr $SLEEP_CNT + 1`
     SERVICE_IS_RUNNING=`docker service ls | grep "$1_$2" | wc -l`
 
@@ -44,6 +43,8 @@ do
     then
         break
     fi
+    
+    sleep 1
 done
 
 docker service logs --tail 0 -f $1_$2 | while read line; do
