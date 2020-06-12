@@ -15,15 +15,15 @@ then
     exit 1
 fi
 
-IS_RUNNING=`docker stack ls | grep "$1" | wc -l`
+STACK_IS_RUNNING=`docker stack ls | grep "$1" | wc -l`
 
-if [ $IS_RUNNING = 0 ]
+if [ $STACK_IS_RUNNING = 0 ]
 then
     echo "docker stack $1 is not running. init start"
     docker stack deploy -c docker/docker-stack.yml $1
 fi
 
-if [ $IS_RUNNING != 0 ]
+if [ $STACK_IS_RUNNING != 0 ]
 then
     echo "docker stack is already running.. service update"
     echo "docker service update --force --update-parallelism 1 --update-delay $4 --image=$3 $1_$2"
@@ -32,7 +32,19 @@ fi
 
 #docker service logs --tail 0 -f $1_$2
 
-sleep 3
+SLEEP_CNT=0
+while :
+do
+    sleep 1
+    SLEEP_CNT=`expr $SLEEP_CNT + 1`
+    SERVICE_IS_RUNNING=`docker service ls | grep "$1_$2" | wc -l`
+    #echo "CNT : "$SLEEP_CNT
+    #echo $SERVICE_IS_RUNNING
+    if [ $SERVICE_IS_RUNNING = 1 ] || [ $SLEEP_CNT = 5 ]
+    then
+        break
+    fi
+done
 
 docker service logs --tail 0 -f $1_$2 | while read line; do
     echo "$line"
