@@ -16,7 +16,7 @@ services:
         - 10090:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
-        replicas: 1
+        replicas: 2
         placement:
 #          constraints: [node.role == manager]
 #          constraints: [node.role == worker]
