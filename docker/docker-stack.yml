@@ -16,11 +16,12 @@ services:
         - 10090:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
-        replicas: 1
+        replicas: 2
         placement:
 #          constraints: [node.role == manager]
 #          constraints: [node.role == worker]
-           constraints: [node.hostname == jv0516]
+          constraints: [node.role != manager]
+#           constraints: [node.hostname == jv0516]
 
       volumes:
         - /box/logs/vms/springboot:/box/java_logs/vms ### Edit WAS name 
