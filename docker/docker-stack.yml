@@ -8,7 +8,7 @@ services:
         context: .
         dockerfile: Dockerfile
 #      restart: always # if container down restart autometic
-#      user: "701"
+      user: "701"
 #      user: root
       ports:
         - 8180:8080 ### Edit port name (http) 
@@ -19,8 +19,8 @@ services:
         replicas: 1
         placement:
 #          constraints: [node.role == manager]
-          constraints: [node.role == worker]
-#           constraints: [node.hostname == jv0516]
+#          constraints: [node.role == worker]
+           constraints: [node.hostname == jv0516]
 
       volumes:
         - /box/logs/vms/springboot:/box/java_logs/vms ### Edit WAS name 
