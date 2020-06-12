@@ -8,19 +8,19 @@ services:
         context: .
         dockerfile: Dockerfile
 #      restart: always # if container down restart autometic
-      user: "701" # Fixed Value (asmanager)
-#      user: root
+#      user: "701" # Fixed Value (asmanager)
+      user: root
       ports:
         - 8180:8080 ### Edit port name (http) 
         - 8109:8009 ### Edit port name (ajp)
         - 10090:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
-        replicas: 2
+        replicas: 1
         placement:
 #          constraints: [node.role == manager]
-          constraints: [node.role == worker]
-#           constraints: [node.hostname == jv0516]
+#          constraints: [node.role == worker]
+           constraints: [node.hostname == jv0516]
 
       volumes:
         - /box/logs/vms/springboot:/box/java_logs/vms ### Edit WAS name 
