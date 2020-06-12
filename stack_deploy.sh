@@ -3,7 +3,7 @@
 if [ "$1" = "" ] || [ "$2" = "" ] || [ "$3" = "" ]  || [ "$4" = "" ]
 then
     echo "========== Usage ==================================================="
-    echo " WARN : param 2 need"
+    echo " WARN : param 4 need"
     echo " param1 : application name"
     echo " param2 : docker-stack.yml's service name"
     echo " param3 : docker image name"
