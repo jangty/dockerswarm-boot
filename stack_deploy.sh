@@ -38,7 +38,7 @@ do
     echo "[INFO] WAITING... for start docker service"
     SLEEP_CNT=`expr $SLEEP_CNT + 1`
     SERVICE_IS_RUNNING=`docker service ls | grep "$1_$2" | wc -l`
-
+    echo "[INFO] SLEEP_CNT : "$SLEEP_CNT
     if [ $SERVICE_IS_RUNNING = 1 ] || [ $SLEEP_CNT = 5 ]
     then
         break
