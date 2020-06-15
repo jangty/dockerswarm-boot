@@ -2,10 +2,11 @@
 
 FROM centos:7.8.2003
 
-openjdk:8
-
-RUN yum -y install openjdk:8 && \
-    yum clean all
+#RUN yum -y install openjdk:8 && \
+#    yum clean all
+RUN yum install -y java-1.8.0-openjdk  \
+    java-1.8.0-openjdk-devel  \
+    net-tools 
 
 #RUN adduser asmanager
 
@@ -19,6 +20,7 @@ COPY ${JAR_FILE} app.jar
 # scouter
 RUN mkdir scouter
 COPY docker/scouter scouter
+COPY entrypoint.sh /
 
 RUN mkdir box
 RUN mkdir box/java_logs
@@ -27,8 +29,8 @@ RUN mkdir box/java_logs/vms
 
 EXPOSE 8080
 
-#ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Dserver.port=8080", "-jar", "app.jar"]
-ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Xms128m", "-Xmx1024m", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
+CMD ./entrypoint.sh
+#ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Xms128m", "-Xmx1024m", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
 
 
 # TODO : log dir
