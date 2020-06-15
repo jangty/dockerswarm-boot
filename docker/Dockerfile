@@ -22,6 +22,7 @@ RUN mkdir scouter
 COPY docker/scouter scouter
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
+RUN chmod 755 scripts
 
 RUN mkdir box
 RUN mkdir box/java_logs
