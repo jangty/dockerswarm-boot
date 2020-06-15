@@ -11,7 +11,6 @@ RUN yum install -y java-1.8.0-openjdk  \
 #RUN adduser asmanager
 
 #USER asmanager
-USER "701"
 
 ARG JAR_FILE=site/target/*.jar
 
