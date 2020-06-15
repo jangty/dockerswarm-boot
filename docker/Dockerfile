@@ -16,15 +16,17 @@ ARG JAR_FILE=site/target/*.jar
 
 COPY ${JAR_FILE} app.jar
 
+RUN groupadd -r docker \
+    && useradd -r -g asmanager asmanager
 
 # scouter
 RUN mkdir scouter
 COPY docker/scouter scouter
-RUN chmod -R 777 scouter/scouter.conf
+RUN chmod -R 777 scouter/scouter.conf 
 
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
-RUN chmod -R 777 scripts/entrypoint.sh
+RUN chmod -R 777 scripts/entrypoint.sh && chown asmanager scripts/entrypoint.sh
 
 RUN mkdir box
 RUN mkdir box/java_logs
@@ -32,6 +34,8 @@ RUN mkdir box/java_logs/vms
 
 
 EXPOSE 8080
+
+USER asmanager
 
 CMD scripts/entrypoint.sh
 #ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Xms128m", "-Xmx1024m", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
