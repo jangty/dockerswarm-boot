@@ -3,7 +3,7 @@ version: '3.7'
 services:
     springboot:
       #image: 10.50.23.30:5000/boot-vms:latest ### Edit image name 
-      image: 10.50.23.30:5000/appname-was:latest ### Edit image name 
+      image: 10.50.23.30:5000/%APPLICATION_NAME%:latest ### Edit image name 
       build:
         context: .
         dockerfile: Dockerfile
@@ -11,9 +11,9 @@ services:
       user: "701" # Fixed Value (asmanager)
 #      user: root
       ports:
-        - 8580:8080 ### Edit port name (http) 
-        - 8509:8009 ### Edit port name (ajp)
-        - 10490:9990 ### Edit port name (webadmin)
+        - %HTTP_PORT%:8080 ### Edit port name (http) 
+        - %AJP_PORT%:8009 ### Edit port name (ajp)
+        - %ADMIN_PORT%:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
         replicas: 1
@@ -24,7 +24,7 @@ services:
            constraints: [node.hostname == jv0516]
 
       volumes:
-        - /box/logs/appname/springboot:/box/java_logs/appname ### Edit WAS name , application log dir
+        - /box/logs/%APPLICATION_NAME%/springboot:/box/java_logs/%APPLICATION_NAME% ### Edit WAS name , application log dir
 #      networks:
 #        - backend
       environment:

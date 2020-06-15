@@ -30,7 +30,7 @@ RUN chmod -R 777 scripts && chown -R asmanager scripts
 
 RUN mkdir box
 RUN mkdir box/java_logs
-RUN mkdir box/java_logs/vms
+RUN mkdir box/java_logs/%APPLICATION_NAME%
 
 
 EXPOSE 8080
