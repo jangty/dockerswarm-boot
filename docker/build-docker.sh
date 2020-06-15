@@ -12,7 +12,7 @@ sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i ${dir}/docker/docker-stack.yml
 
 
 ## image build
-docker build -t ${REGISTRY}/${APPLICATION_NAME}  .
+docker build -t ${REGISTRY}/${APPLICATION_NAME} -f docker/Dockerfile .
 docker tag ${REGISTRY}/${APPLICATION_NAME}:latest ${REGISTRY}/${APPLICATION_NAME}:latest
 docker push ${REGISTRY}/${APPLICATION_NAME}
 
