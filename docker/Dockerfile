@@ -17,7 +17,7 @@ ARG JAR_FILE=site/target/*.jar
 COPY ${JAR_FILE} app.jar
 
 RUN groupadd -r docker \
-    && useradd -r -g asmanager asmanager
+    && useradd -r -g asmanager docker
 
 # scouter
 RUN mkdir scouter
