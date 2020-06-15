@@ -22,11 +22,11 @@ RUN groupadd -r docker \
 # scouter
 RUN mkdir scouter
 COPY docker/scouter scouter
-RUN chmod -R 777 scouter/scouter.conf 
+RUN chmod -R 777 scouter && chown -R asmanager scouter
 
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
-RUN chmod -R 777 scripts/entrypoint.sh && chown -R asmanager scripts
+RUN chmod -R 777 scripts && chown -R asmanager scripts
 
 RUN mkdir box
 RUN mkdir box/java_logs
@@ -35,7 +35,7 @@ RUN mkdir box/java_logs/vms
 
 EXPOSE 8080
 
-USER root
+USER asmanager
 
 CMD scripts/entrypoint.sh
 #ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Xms128m", "-Xmx1024m", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
