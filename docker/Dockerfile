@@ -26,7 +26,7 @@ RUN chmod -R 777 scouter/scouter.conf
 
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
-RUN chmod -R 777 scripts/entrypoint.sh && chown asmanager scripts/entrypoint.sh
+RUN chmod -R 777 scripts/entrypoint.sh && chown -R asmanager scripts
 
 RUN mkdir box
 RUN mkdir box/java_logs
