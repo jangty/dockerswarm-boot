@@ -16,7 +16,7 @@ fi
 STACK_IS_RUNNING=`docker stack ls | grep "%APPLICATION_NAME%" | wc -l`
 
 if [ $STACK_IS_RUNNING = 0 ]
-then$
+then
     echo "[INFO] docker stack %APPLICATION_NAME% is not running. init start"
     docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
 fi
