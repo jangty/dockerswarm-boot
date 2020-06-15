@@ -1,6 +1,6 @@
 #!/bin/bash
 dir=`pwd`
-source ${dir}/.env
+source ${dir}/docker/.env
 
 sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i entrypoint.sh
 sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i Dockerfile
