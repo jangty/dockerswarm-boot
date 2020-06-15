@@ -11,6 +11,8 @@ RUN yum -y install openjdk:8 && \
 
 #USER asmanager
 
+HOSTNAME=appname
+
 ARG JAR_FILE=site/target/*.jar
 
 COPY ${JAR_FILE} app.jar
