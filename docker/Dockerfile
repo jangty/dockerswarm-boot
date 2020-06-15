@@ -2,8 +2,6 @@
 
 FROM centos:7.8.2003
 
-openjdk:8
-
 RUN yum -y install openjdk:8 && \
     yum clean all
 
