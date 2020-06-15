@@ -20,6 +20,8 @@ COPY ${JAR_FILE} app.jar
 # scouter
 RUN mkdir scouter
 COPY docker/scouter scouter
+RUN chmod -R 777 scouter/scouter.conf
+
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
 RUN chmod -R 777 scripts/entrypoint.sh
