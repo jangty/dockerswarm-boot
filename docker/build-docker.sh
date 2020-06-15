@@ -11,6 +11,13 @@ sed "s/%AJP_PORT%/${AJP_PORT}/g" -i ${dir}/docker/docker-stack.yml
 sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i ${dir}/docker/docker-stack.yml
 
 
+sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i ${dir}/docker/stack_deploy.sh
+
+
+sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/stack_deploy.sh
+sed "s/%REGISTRY%/${APPLICATION_NAME}/g" -i ${dir}/stack_deploy.sh
+
+
 ## image build
 docker build -t ${REGISTRY}/${APPLICATION_NAME} -f docker/Dockerfile .
 docker tag ${REGISTRY}/${APPLICATION_NAME}:latest ${REGISTRY}/${APPLICATION_NAME}:latest
