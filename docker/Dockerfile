@@ -21,7 +21,7 @@ COPY ${JAR_FILE} app.jar
 RUN mkdir scouter
 COPY docker/scouter scouter
 RUN mkdir scripts
-COPY entrypoint.sh scripts
+COPY docker/entrypoint.sh scripts
 
 RUN mkdir box
 RUN mkdir box/java_logs
