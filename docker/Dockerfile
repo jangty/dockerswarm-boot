@@ -11,6 +11,7 @@ RUN yum install -y java-1.8.0-openjdk  \
 #RUN adduser asmanager
 
 #USER asmanager
+USER "701"
 
 ARG JAR_FILE=site/target/*.jar
 
@@ -22,7 +23,7 @@ RUN mkdir scouter
 COPY docker/scouter scouter
 RUN mkdir scripts
 COPY docker/entrypoint.sh scripts
-RUN chmod 755 scripts
+RUN chmod -R 777 scripts/entrypoint.sh
 
 RUN mkdir box
 RUN mkdir box/java_logs
