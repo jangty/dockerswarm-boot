@@ -35,7 +35,7 @@ RUN mkdir box/java_logs/vms
 
 EXPOSE 8080
 
-USER asmanager
+USER root
 
 CMD scripts/entrypoint.sh
 #ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Xms128m", "-Xmx1024m", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
