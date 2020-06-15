@@ -2,13 +2,13 @@
 dir=`pwd`
 source ${dir}/docker/.env
 
-sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i entrypoint.sh
-sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i Dockerfile
-sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i docker-stack.yml
+sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/docker/entrypoint.sh
+sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/docker/Dockerfile
+sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/docker/docker-stack.yml
 
-sed "s/%HTTP_PORT%/${HTTP_PORT}/g" -i docker-stack.yml
-sed "s/%AJP_PORT%/${AJP_PORT}/g" -i docker-stack.yml
-sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i docker-stack.yml
+sed "s/%HTTP_PORT%/${HTTP_PORT}/g" -i ${dir}/docker/docker-stack.yml
+sed "s/%AJP_PORT%/${AJP_PORT}/g" -i ${dir}/docker/docker-stack.yml
+sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i ${dir}/docker/docker-stack.yml
 
 
 ## image build
