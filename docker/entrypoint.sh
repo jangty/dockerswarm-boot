@@ -1,6 +1,6 @@
 
 # scouter host name
-obj_host_name=appname-test
+obj_host_name=%APPLICATION_NAME%
 
 HOSTNAME=`hostname`
 DATE=$(date +%Y%m%d%H%M%S)

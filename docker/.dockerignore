@@ -4,5 +4,6 @@ README-secret.md
 .git
 .github
 *.log
+.env
 build
 

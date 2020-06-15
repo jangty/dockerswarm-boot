@@ -28,6 +28,5 @@ services:
 #      networks:
 #        - backend
       environment:
-        WAS_NAME: appname ### Edit WAS name 
         TZ: Asia/Seoul
 
