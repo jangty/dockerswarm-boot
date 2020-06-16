@@ -10,8 +10,8 @@ sed "s/%HTTP_PORT%/${HTTP_PORT}/g" -i ${dir}/docker/docker-stack.yml
 sed "s/%AJP_PORT%/${AJP_PORT}/g" -i ${dir}/docker/docker-stack.yml
 sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i ${dir}/docker/docker-stack.yml
 
-sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/stack_deploy.sh
-sed "s/%REGISTRY%/${REGISTRY}/g" -i ${dir}/stack_deploy.sh
+sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/stack_deploy_jenkins.sh
+sed "s/%REGISTRY%/${REGISTRY}/g" -i ${dir}/stack_deploy_jenkins.sh
 
 
 ## image build
