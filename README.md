@@ -8,6 +8,7 @@ docker swarm 환경에서 수동으로 기동하지 않고,
 
 젠킨스에서 stack_deploy_jenkins.sh 스크립트로 배포 (수동으로 배포가 필요한 경우는 stack_deploy_manual.sh 사용. 사용법 어려움.)
 
+develop 브랜치 : 개발서버용 env, master 브랜치 운영서버용 env
 
 
 ## 사용시 관리해야하는 정보
