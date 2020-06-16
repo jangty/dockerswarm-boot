@@ -15,13 +15,13 @@ develop 브랜치 : 개발서버용 env, master 브랜치 운영서버용 env
 어플리케이션별로 아래 정보 관리필요
 1. .env 파일
 
-어플리케이션 이름 (WAS이름) : APPLICATION_NAME
+- 어플리케이션 이름 (WAS이름) : APPLICATION_NAME
+- 도커 레지스트리 정보 : REGISTRY
+- http 포트 : 
+- ajp 포트 : 
+- admin 포트 : 
 
-도커 레지스트리 정보 : REGISTRY
-
-http 포트 : 
-
-ajp 포트 : 
-
-admin 포트 : 
+2. scouter.conf
+- 스카우터 수집서버 IP
+- 스카우터 수집서버 Port
 
