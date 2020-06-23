@@ -25,5 +25,5 @@ sed "s/%NET_COLLECTOR_TCP_PORT%/${net_collector_tcp_port}/g" -i scouter/scouter.
 #sed "s/%HOOK_METHOD_PATTERNS%/${hook_method_patterns}/g" -i scouter/scouter.conf
 
 
-java -Dspring.profiles.active=prod -Dmaven.test.skip=true -Xms128m -Xmx1024m -javaagent:scouter/scouter.agent.jar -Dscouter.config=scouter/scouter.conf -jar app.war
+java -Dspring.profiles.active=dev -Dmaven.test.skip=true -Xms128m -Xmx1024m -javaagent:scouter/scouter.agent.jar -Dscouter.config=scouter/scouter.conf -jar app.war
 #bin/startup.sh; tail -f logs/catalina.out
