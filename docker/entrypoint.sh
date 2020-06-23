@@ -10,10 +10,10 @@ net_collector_ip=10.50.106.137
 
 # Update Scouter Ports
 # UDP Receive Port(Default : 6100)
-net_collector_udp_port=6040
+net_collector_udp_port=6030
 
 # TCP Receive Port(Default : 6100)
-net_collector_tcp_port=6040
+net_collector_tcp_port=6030
 
 #hook_method_patterns=${HOOK_METHOD_PATTERNS:-org.mybatis.jpetstore.*.*}
 
