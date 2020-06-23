@@ -12,9 +12,9 @@ RUN yum install -y java-1.8.0-openjdk  \
 
 #USER asmanager
 
-ARG JAR_FILE=site/target/*.jar
+ARG JAR_FILE=site/target/*.war
 
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} app.war
 
 RUN groupadd -r docker \
     && useradd -r -g docker asmanager
