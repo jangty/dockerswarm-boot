@@ -21,7 +21,7 @@ develop 브랜치 : 개발서버용 env, master 브랜치 운영서버용 env
 - ajp 포트 : 
 - admin 포트 : 
 
-2. scouter.conf
+2. entrypoint.sh
 - 스카우터 수집서버 IP
 - 스카우터 수집서버 Port
 
