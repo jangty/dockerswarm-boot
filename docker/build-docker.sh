@@ -13,6 +13,7 @@ sed "s/%ADMIN_PORT%/${ADMIN_PORT}/g" -i ${dir}/docker/docker-stack.yml
 sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/stack_deploy_jenkins.sh
 sed "s/%REGISTRY%/${REGISTRY}/g" -i ${dir}/stack_deploy_jenkins.sh
 
+sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/rollback_jenkins.sh
 
 ## image build
 docker build -t ${REGISTRY}/${APPLICATION_NAME} -f docker/Dockerfile .

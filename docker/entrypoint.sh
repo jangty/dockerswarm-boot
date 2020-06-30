@@ -10,10 +10,10 @@ net_collector_ip=10.50.106.137
 
 # Update Scouter Ports
 # UDP Receive Port(Default : 6100)
-net_collector_udp_port=6030
+net_collector_udp_port=7030
 
 # TCP Receive Port(Default : 6100)
-net_collector_tcp_port=6030
+net_collector_tcp_port=7030
 
 #hook_method_patterns=${HOOK_METHOD_PATTERNS:-org.mybatis.jpetstore.*.*}
 
@@ -25,5 +25,5 @@ sed "s/%NET_COLLECTOR_TCP_PORT%/${net_collector_tcp_port}/g" -i scouter/scouter.
 #sed "s/%HOOK_METHOD_PATTERNS%/${hook_method_patterns}/g" -i scouter/scouter.conf
 
 
-java -Dspring.profiles.active=prod -Dmaven.test.skip=true -Xms128m -Xmx1024m -javaagent:scouter/scouter.agent.jar -Dscouter.config=scouter/scouter.conf -jar app.war
+java -Dspring.profiles.active=dev -Dmaven.test.skip=true -Xms128m -Xmx1024m -javaagent:scouter/scouter.agent.jar -Dscouter.config=scouter/scouter.conf -jar app.war
 #bin/startup.sh; tail -f logs/catalina.out
