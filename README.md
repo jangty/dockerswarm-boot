@@ -25,3 +25,7 @@ develop 브랜치 : 개발서버용 env, master 브랜치 운영서버용 env
 - 스카우터 수집서버 IP
 - 스카우터 수집서버 Port
 
+## 젠킨스 pipeline 
+deploy, rollback 용 2개를 만들어줘야 한다
+
+
