@@ -6,7 +6,8 @@ FROM centos:7.8.2003
 #    yum clean all
 RUN yum install -y java-1.8.0-openjdk  \
     java-1.8.0-openjdk-devel  \
-    net-tools 
+    net-tools \
+    locales
 
 #RUN adduser asmanager
 
@@ -36,6 +37,9 @@ RUN mkdir box/java_logs/%APPLICATION_NAME%
 EXPOSE 8080
 
 USER asmanager
+
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 CMD scripts/entrypoint.sh
 #ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-Dmaven.test.skip=true", "-Xms128m", "-Xmx1024m", "-javaagent:scouter/scouter.agent.jar", "-Dscouter.config=scouter/scouter.conf", "-jar", "app.jar"]
