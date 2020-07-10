@@ -16,6 +16,9 @@ sed "s/%REGISTRY%/${REGISTRY}/g" -i ${dir}/stack_deploy_jenkins.sh
 
 sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/rollback_jenkins.sh
 
+sed "s/%DEPLOY_MODE%/${DEPLOY_MODE}/g" -i ${dir}/docker/entrypoint.sh
+
+
 # scouter conf
 sed "s/%NET_COLLECTOR_IP%/${SCOUTER_COLLECTOR_IP}/g" -i ${dir}/docker/scouter/scouter.conf
 sed "s/%NET_COLLECTOR_UDP_PORT%/${SCOUTER_UDP_PORT}/g" -i ${dir}/docker/scouter/scouter.conf
