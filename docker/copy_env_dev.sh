@@ -1,1 +1,1 @@
-cp ./.env_dev ./.env
+cp ../.env_dev ../.env
