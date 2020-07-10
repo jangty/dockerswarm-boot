@@ -20,8 +20,8 @@ services:
         placement:
 #          constraints: [node.role == manager]
 #          constraints: [node.role == worker]
-#          constraints: [node.role != manager]
-           constraints: [node.hostname == jv0516]
+          constraints: [node.role != manager]
+#           constraints: [node.hostname == jv0516]
 
 #      volumes:
 #        - /box/logs/%APPLICATION_NAME%/springboot:/box/java_logs/%APPLICATION_NAME% ### Edit WAS name , application log dir
