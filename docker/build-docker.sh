@@ -20,7 +20,7 @@ sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/rollback_jenkins.sh
 sed "s/%NET_COLLECTOR_IP%/${SCOUTER_COLLECTOR_IP}/g" -i ${dir}/docker/scouter/scouter.conf
 sed "s/%NET_COLLECTOR_UDP_PORT%/${SCOUTER_UDP_PORT}/g" -i ${dir}/docker/scouter/scouter.conf
 sed "s/%NET_COLLECTOR_TCP_PORT%/${SCOUTER_TCP_PORT}/g" -i ${dir}/docker/scouter/scouter.conf
-sed "s/%HOOK_METHOD_PATTERNS%/${SCOUTER_HOOK_METHOD_PATTERNS}/g" -i ${dir}/docker/scouter/scouter.conf
+
 
 ## image build
 docker build -t ${REGISTRY}/${APPLICATION_NAME} -f docker/Dockerfile .
