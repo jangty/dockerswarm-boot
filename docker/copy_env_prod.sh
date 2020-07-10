@@ -1,3 +1,4 @@
 #!/bin/sh
+ABSOLUTE_PATH="$(cd $(dirname "$0") && pwd -P)"
 
-cp ./.env_prod ./.env
+cp $ABSOLUTE_PATH/.env_prod $ABSOLUTE_PATH/.env
