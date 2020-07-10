@@ -1,1 +1,3 @@
-cp ../.env_dev ../.env
+#!/bin/sh
+
+cp ./.env_dev ./.env
