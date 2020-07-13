@@ -33,4 +33,5 @@ services:
         TZ: Asia/Seoul
 networks:
   vms:
+    external: true
 
