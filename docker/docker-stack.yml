@@ -28,9 +28,7 @@ services:
 #      networks:
 #        - backend
       networks:
-        vms-backend :
-          aliase:
-            - backend
+       - vms-backend
       environment:
         TZ: Asia/Seoul
 networks:
