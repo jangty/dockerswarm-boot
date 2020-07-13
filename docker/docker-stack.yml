@@ -27,6 +27,8 @@ services:
 #        - /box/logs/%APPLICATION_NAME%/springboot:/box/java_logs/%APPLICATION_NAME% ### Edit WAS name , application log dir
 #      networks:
 #        - backend
+      networks:
+        - vms-backend
       environment:
         TZ: Asia/Seoul
 
