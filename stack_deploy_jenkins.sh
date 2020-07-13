@@ -14,7 +14,7 @@ then
 fi
 
 STACK_IS_RUNNING=`docker stack ls | grep "%APPLICATION_NAME%" | wc -l`
-
+SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
 if [ $STACK_IS_RUNNING = 0 ]
 then
     echo "[INFO] docker stack %APPLICATION_NAME% is not running. init start"
@@ -23,12 +23,11 @@ fi
 
 if [ $STACK_IS_RUNNING != 0 ]
 then
-    SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
-    if [ $SERVICE_IS_RUNNING = 0 ]
-    then
-        echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
-        docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
-    fi
+elif [ $SERVICE_IS_RUNNING = 0 ]
+then
+    echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
+    docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
+else
     echo "[INFO] docker stack is already running.. service update"
     echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
     docker service update --force --update-parallelism 1 --update-delay $2 --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1
