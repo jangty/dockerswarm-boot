@@ -28,10 +28,10 @@ services:
 #      networks:
 #        - backend
       networks:
-       - vms-backend 
+       - backend 
       environment:
         TZ: Asia/Seoul
 networks:
-  vms-backend:
+  backend:
     driver: overlay
         
