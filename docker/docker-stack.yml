@@ -28,11 +28,10 @@ services:
 #      networks:
 #        - backend
       networks:
-       backend:
-         aliases:
-           - was
+       - vms
       environment:
         TZ: Asia/Seoul
 networks:
-  backend:
+  vms:
+    external: true
 
