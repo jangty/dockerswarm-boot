@@ -31,4 +31,7 @@ services:
         - vms-backend
       environment:
         TZ: Asia/Seoul
+networks:
+  vms-backend:
+    driver: overlay
 
