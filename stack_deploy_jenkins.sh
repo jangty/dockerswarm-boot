@@ -23,14 +23,15 @@ fi
 
 if [ $STACK_IS_RUNNING != 0 ]
 then
-elif [ $SERVICE_IS_RUNNING = 0 ]
-then
-    echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
-    docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
-else
-    echo "[INFO] docker stack is already running.. service update"
-    echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
-    docker service update --force --update-parallelism 1 --update-delay $2 --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1
+    if [ $SERVICE_IS_RUNNING = 0 ]
+    then
+        echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
+        docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
+    else
+        echo "[INFO] docker stack is already running.. service update"
+        echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
+        docker service update --force --update-parallelism 1 --update-delay $2 --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1
+    fi
 fi
 
 #docker service logs --tail 0 -f %APPLICATION_NAME%_$1
