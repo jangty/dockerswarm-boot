@@ -21,8 +21,6 @@ then
     docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
 fi
 
-SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
-
 if [ $STACK_IS_RUNNING != 0 ]
 then
     SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
