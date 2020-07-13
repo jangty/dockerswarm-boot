@@ -14,7 +14,7 @@ then
 fi
 
 STACK_IS_RUNNING=`docker stack ls | grep "%APPLICATION_NAME%" | wc -l`
-SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
+
 if [ $STACK_IS_RUNNING = 0 ]
 then
     echo "[INFO] docker stack %APPLICATION_NAME% is not running. init start"
@@ -23,6 +23,7 @@ fi
 
 if [ $STACK_IS_RUNNING != 0 ]
 then
+    SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
     if [ $SERVICE_IS_RUNNING = 0 ]
     then
         echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
