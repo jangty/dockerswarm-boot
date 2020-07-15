@@ -10,10 +10,10 @@ services:
 #      restart: always # if container down restart autometic
       user: "701" # Fixed Value (asmanager)
 #      user: root
-#      ports:
-#        - %HTTP_PORT%:8080 ### Edit port name (http) 
-#        - %AJP_PORT%:8009 ### Edit port name (ajp)
-#        - %ADMIN_PORT%:9990 ### Edit port name (webadmin)
+      ports:
+        - %HTTP_PORT%:8080 ### Edit port name (http) 
+        - %AJP_PORT%:8009 ### Edit port name (ajp)
+        - %ADMIN_PORT%:9990 ### Edit port name (webadmin)
       deploy:
         mode: replicated
         replicas: 2
