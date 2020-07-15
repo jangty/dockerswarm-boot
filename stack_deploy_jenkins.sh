@@ -13,12 +13,12 @@ then
     exit 1
 fi
 
-STACK_IS_RUNNING=`docker stack ls | grep "%APPLICATION_NAME%" | wc -l`
+STACK_IS_RUNNING=`docker stack ls | grep "%STACK_NAME%" | wc -l`
 
 if [ $STACK_IS_RUNNING = 0 ]
 then
-    echo "[INFO] docker stack %APPLICATION_NAME% is not running. init start"
-    docker stack deploy -c docker/docker-stack.yml --with-registry-auth %APPLICATION_NAME%
+    echo "[INFO] docker stack %STACK_NAME% is not running. init start"
+    docker stack deploy -c docker/docker-stack.yml --with-registry-auth %STACK_NAME%
 fi
 
 if [ $STACK_IS_RUNNING != 0 ]
@@ -27,7 +27,7 @@ then
     if [ $SERVICE_IS_RUNNING = 0 ]
     then
         echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
-        docker stack deploy -c docker/docker-stack.yml --with-registry-auth %APPLICATION_NAME%
+        docker stack deploy -c docker/docker-stack.yml --with-registry-auth %STACK_NAME%
     else
         echo "[INFO] docker stack is already running.. service update"
         echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
@@ -61,7 +61,7 @@ docker service logs --tail 0 -f %APPLICATION_NAME%_$1 | while read line; do
             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
             
             echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] AUTO ROLLBACK !!!!!! "
-            docker service rollback %APPLICATION_NAME%_$1
+            docker service rollback %APPLICATION_NAME%
             echo "[[[[[[[[[[[[ ERROR]]]]]]]]]]]] rollback Complete ! "
             echo "[INFO] CHECK Application Service !!!!!! "
             
