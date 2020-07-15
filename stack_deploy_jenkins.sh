@@ -1,13 +1,12 @@
 #!/bin/sh
 
-if [ "$1" = "" ] || [ "$2" = "" ]
+if [ "$1" = "" ] 
 then
     echo "========== Usage ==================================================="
-    echo " WARN : param 4 need"
-    echo " param1 : docker-stack.yml's service name"
-    echo " param2 : docker update time interval"
-    echo " ex) stack_deploy.sh param1 param2"
-    echo " ex) stack_deploy.sh test-was 60s"
+    echo " WARN : param 1 need"
+    echo " param1 : docker update time interval"
+    echo " ex) stack_deploy.sh param1"
+    echo " ex) stack_deploy.sh 60s"
     echo "====================================================================="
 
     exit 1
@@ -30,19 +29,19 @@ then
         docker stack deploy -c docker/docker-stack.yml --with-registry-auth %STACK_NAME%
     else
         echo "[INFO] docker stack is already running.. service update"
-        echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
-        docker service update --force --update-parallelism 1 --update-delay $2 --with-registry-auth	--image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1
+        echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $1 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%"
+        docker service update --force --update-parallelism 1 --update-delay $1 --with-registry-auth	--image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%
     fi
 fi
 
-#docker service logs --tail 0 -f %APPLICATION_NAME%_$1
+#docker service logs --tail 0 -f %APPLICATION_NAME%
 
 SLEEP_CNT=0
 while :
 do
     echo "[INFO] WAITING... for start docker service"
     SLEEP_CNT=`expr $SLEEP_CNT + 1`
-    SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%_$1" | wc -l`
+    SERVICE_IS_RUNNING=`docker service ls | grep "%APPLICATION_NAME%" | wc -l`
     echo "[INFO] SLEEP_CNT : "$SLEEP_CNT
     if [ $SERVICE_IS_RUNNING = 1 ] || [ $SLEEP_CNT = 5 ]
     then
@@ -52,7 +51,7 @@ do
     sleep 1
 done
 
-docker service logs --tail 0 -f %APPLICATION_NAME%_$1 | while read line; do
+docker service logs --tail 0 -f %APPLICATION_NAME% | while read line; do
     echo "$line"
       if [[ $line =~ 'Started SiteApplication in' ]]; then
             pkill -9 -P $$ -f "docker service logs --tail 0 -f"
