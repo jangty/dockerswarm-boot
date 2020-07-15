@@ -31,7 +31,7 @@ then
     else
         echo "[INFO] docker stack is already running.. service update"
         echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
-        docker service update --force --update-parallelism 1 --update-delay $2 --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1
+        docker service update --force --update-parallelism 1 --update-delay $2 --with-registry-auth	 --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1
     fi
 fi
 
