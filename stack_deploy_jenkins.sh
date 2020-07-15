@@ -7,7 +7,7 @@ then
     echo " param1 : docker-stack.yml's service name"
     echo " param2 : docker update time interval"
     echo " ex) stack_deploy.sh param1 param2"
-    echo " ex) stack_deploy.sh test-was springboot 10.50.23.30:5000/test-boot:latest 60s"
+    echo " ex) stack_deploy.sh test-was 60s"
     echo "====================================================================="
 
     exit 1
@@ -27,7 +27,7 @@ then
     if [ $SERVICE_IS_RUNNING = 0 ]
     then
         echo "[INFO] docker SERVICE %APPLICATION_NAME% is not running. init start"
-        docker stack deploy -c docker/docker-stack.yml %APPLICATION_NAME%
+        docker stack deploy -c docker/docker-stack.yml --with-registry-auth %APPLICATION_NAME%
     else
         echo "[INFO] docker stack is already running.. service update"
         echo "[INFO] docker service update --force --update-parallelism 1 --update-delay $2 --update-order=start-first --update-monitor=1s --update-max-failure-ratio=0 --update-failure-action rollback --image=%REGISTRY%/%APPLICATION_NAME%:latest %APPLICATION_NAME%_$1"
