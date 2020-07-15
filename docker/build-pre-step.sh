@@ -2,6 +2,8 @@
 dir=`pwd`
 source ${dir}/docker/.env
 
+echo "##### Copy .env varibles ....  #####"
+
 sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/docker/entrypoint.sh
 sed "s/%APPLICATION_NAME%/${APPLICATION_NAME}/g" -i ${dir}/docker/docker-stack.yml
 
